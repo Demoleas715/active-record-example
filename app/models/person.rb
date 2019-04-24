@@ -42,6 +42,10 @@ class Person < ApplicationRecord
 
   # -----ASSOCIATIONS-----
   has_many :orders
-  
 
+
+  # -----SEARCH-----
+  def self.search(term, page = 1, per_page = 10)
+    Person.offset( per_page * (page - 1)).limit(per_page).find_by_last_name term
+  end
 end
