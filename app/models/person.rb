@@ -1,4 +1,5 @@
 class Person < ApplicationRecord
+  # -----VALIDATIONS-----
   # Presence, uniqueness, and inclusion/exclusion
   validates :first_name, :last_name, presence: true
   # validates :username, uniqueness: { case_sensitive: false }
@@ -30,9 +31,17 @@ class Person < ApplicationRecord
   # Conditional validation
   # validates :password, length: { in: 10..20, on: :create }
 
+
+  # -----CALLBACKS-----
   before_save :change_name
 
   def change_name
     self.first_name = 'Bob'
   end
+
+
+  # -----ASSOCIATIONS-----
+  has_many :orders
+  
+
 end
