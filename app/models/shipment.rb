@@ -1,6 +1,7 @@
 class Shipment < ApplicationRecord
   validate :volume_limits
-
+  validates_with DensityValidator
+  
   def volume
     height * width * depth
   end
