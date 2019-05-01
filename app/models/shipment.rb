@@ -1,4 +1,7 @@
 class Shipment < ApplicationRecord
+  validates_presence_of :weight, :height, :depth, :width
+  validates_numericality_of :weight, :height, :depth, :width
+  
   validate :volume_limits
   validates_with DensityValidator
   validates :height, :width, :depth, package_proportion: true
